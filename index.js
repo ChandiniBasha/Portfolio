@@ -24,20 +24,20 @@ function closeMenu(){
 }
 
 const scriptURL = 'https://script.google.com/macros/s/AKfycbx0CFUvQIbaJ5yMP7nZ9NxHWYqDWHwGlEQ2Nnm2FwBgadxmGmmTTODsg7B4HwAibfBD/exec'
-  const form = document.forms['submit-to-google-sheet']
-  const msg = document.getElementById("msg");
+const form = document.forms['submit-to-google-sheet']
+const msg = document.getElementById("msg");
 
-  form.addEventListener('submit', e => {
+form.addEventListener('submit', e => {
     e.preventDefault()
     fetch(scriptURL, { method: 'POST', body: new FormData(form)})
       .then(response => {
         msg.innerHTML = "Message Sent Successfully"
         setTimeout(function(){
             msg.innerHTML = ""
-        },5000)
+        },2000)
         form.reset();
-      })
-      .catch(error => console.error('Error!', error.message))
-  })
+    })
+.catch(error => console.error('Error!', error.message))
+})
 
 
